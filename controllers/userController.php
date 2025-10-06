@@ -15,7 +15,7 @@ if(isset($_POST['usr']) && isset($_POST['pswd'])){
     $usr = $db->real_escape_string($_POST['usr']);
     $pswd = md5($_POST['pswd']);
 
-    $q = "SELECT * FROM usuario WHERE username='$usr' AND password='$pswd'";
+    $q = "SELECT * FROM user WHERE name='$usr' AND password='$pswd'";
     $result = $db->query($q);
 
     if($row = $result->fetch_assoc()){
