@@ -1,0 +1,2 @@
+Hacer un blog donde se puedan publicar artículos 
+Clases: Usuario (id,name,surname,pswd), Post(titulo,datetime,text,author),
