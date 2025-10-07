@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Bienvenido <?php echo $_SESSION['user']->getName(); ?></h1>
+    <h2>Posts:</h2>
+    <?php
+    foreach($posts as $post) {
+        echo "<ul><a href='index.php?c=post&id=".$post->getId()."'>".$post->getTitle()."</a></ul>";
+    }
+    ?>
+    <br>
+    <a href='index.php?c=post&a=addpost'>Crear Post</a>
+    <br>
+<a href="index.php?c=user&logout=1">Cerrar sesión</a>
+</body>
+</html>

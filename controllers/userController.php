@@ -1,35 +1,30 @@
 <?php
+
 // logout
-if(isset($_GET['logout'])){
+if (isset($_GET['logout'])) {
     unset($_SESSION['user']);
-    header('location:index.php');
+    header('Location: index.php');
     exit();
 }
 
-if(!isset($_SESSION['user'])){
-    $_SESSION['user'] = null;
-}
-
 // login
-if(isset($_POST['usr']) && isset($_POST['pswd'])){
-    $usr = $db->real_escape_string($_POST['usr']);
-    $pswd = md5($_POST['pswd']);
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $q = 'SELECT * FROM user WHERE name="' . $_POST['username'] . '" 
+          AND password="' . md5($_POST['password']) . '"';
 
-    $q = "SELECT * FROM user WHERE name='$usr' AND password='$pswd'";
     $result = $db->query($q);
 
-    if($row = $result->fetch_assoc()){
-        $_SESSION['user'] = new User($row['username'],$row['id']);
-        header('location:index.php'); // redirigir al inicio tras login
+    if ($row = $result->fetch_assoc()) {
+        $_SESSION['user'] = new User($row['name'], $row['id']);
+        header('Location: index.php');
         exit;
+    } else {
+        $error = "Usuario o contraseña incorrectos.";
     }
 }
 
 // si no hay usuario logueado → mostrar login
-if(!$_SESSION['user']){
-    require_once('views/login.phtml');
+if (!$_SESSION['user']) {
+    require_once('views/loginView.phtml');
     exit;
 }
-
-// si llega aquí es porque hay usuario
-require_once("controllers/movieController.php");

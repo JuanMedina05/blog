@@ -1,12 +1,25 @@
 <?php
 require_once('models/User.php');
 require_once('models/Post.php');
+require_once('models/PostRepository.php');
 
-$db=Connection::connect();
+session_start();
 
-require_once("controllers/userController.php");
+$db = Connection::connect();
 
-if(!$_SESSION['user']){
-    require_once("views/login.phtml");
+// Inicializar sesión
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = null;
+}
+
+// Cargar controlador
+if (isset($_GET['c'])) {
+    require_once('controllers/' . $_GET['c'] . 'Controller.php');
+} else {
+    if (!$_SESSION['user']) {
+        require_once('controllers/userController.php');
+    } else {
+        require_once('controllers/postController.php');
+    }
 }
 ?>

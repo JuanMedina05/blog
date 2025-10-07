@@ -5,10 +5,10 @@ class Post{
     private $text;
     private $id;
     public function __construct($title,$datetime,$text,$id){
-        $this->title->$title;
-        $this->datetime->$datetime;
-        $this->text->$text;
-        $this->id->$id;
+        $this->title=$title;
+        $this->datetime=$datetime;
+        $this->text=$text;
+        $this->id=$id;
     }
     public function getTitle(){
         return $this->title;
