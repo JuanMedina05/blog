@@ -1,2 +1,6 @@
 Hacer un blog donde se puedan publicar artículos 
 Clases: Usuario (id,name,surname,pswd), Post(titulo,datetime,text,author),
+
+
+07/10/2025: importante completar los fallos y terminar los comentarios
+    - Además se tienen que añadir roles (en la calse User) y definirlos (admin borra post, usuario comenta...)
