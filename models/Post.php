@@ -4,11 +4,13 @@ class Post{
     private $datetime;
     private $text;
     private $id;
+    private $comments=array();
     public function __construct($title,$datetime,$text,$id){
         $this->title=$title;
         $this->datetime=$datetime;
         $this->text=$text;
         $this->id=$id;
+
     }
     public function getTitle(){
         return $this->title;
@@ -16,7 +18,7 @@ class Post{
     public function getDatetime(){
         return $this->datetime;
     }
-    public function text(){
+    public function getText(){
         return $this->text;
     }
     public function getId(){
